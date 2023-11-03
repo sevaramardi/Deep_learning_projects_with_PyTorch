@@ -1,10 +1,10 @@
 #import matplotlib.pyplot as plt
 import torch
-from model import model
-from main import device
+from Handwrite_mnist.model import model
+from Handwrite_mnist.main import device
 #from test import predicted
 
-from main import test_loader
+from Handwrite_mnist.main import test_loader
 
 
 exam = iter(test_loader)

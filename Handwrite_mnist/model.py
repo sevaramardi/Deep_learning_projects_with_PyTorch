@@ -1,4 +1,4 @@
-from main import train_loader, test_loader, device
+from Handwrite_mnist.main import train_loader, test_loader, device
 import matplotlib.pyplot as plt
 import torch 
 import torch.nn as nn

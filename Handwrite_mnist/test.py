@@ -1,5 +1,5 @@
-from model import model, device
-from main import train_loader, test_loader
+from Handwrite_mnist.model import model, device
+from Handwrite_mnist.main import train_loader, test_loader
 import matplotlib.pyplot as plt
 import torch 
 import torch.nn as nn
