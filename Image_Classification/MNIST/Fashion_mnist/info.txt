@@ -6,4 +6,4 @@ Content: The dataset consists of 70,000 grayscale images in 10 fashion categorie
 This is similar to the original MNIST in terms of the size of the images and the structure of the dataset.
 
 Code: In this code is implemneted image classification for fashion-mnist dataset. Here is created CNN based model
-with batchnormalization, average and max poolings. Model reaches 90% accuracy ,with 50 epochs. The number of epochs depend on the user. 
+with batchnormalization, average and max poolings. Model reaches 90% accuracy ,with 50 epochs. The number of epochs depend on the user.  
