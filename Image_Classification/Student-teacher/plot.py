@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from modified_densenet import num_epochs, metric_history,loss_history
+from student-teacher import num_epochs, metric_history,loss_history
 
 
 plt.title('Train-Val accuracy')
