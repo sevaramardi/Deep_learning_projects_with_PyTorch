@@ -1,1 +1,2 @@
+This network classifies the dog and cat dataset from kaggle with 98% accuracy. I this model we used pretrained model of resnet101 and retrain it with new last fully connected layer for two classes.
 
