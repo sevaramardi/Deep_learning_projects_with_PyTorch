@@ -1,1 +1,1 @@
-
+Linear model was trained for 5 epochs, for cheching the model working process.
