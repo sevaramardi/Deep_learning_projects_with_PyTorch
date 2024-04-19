@@ -1,1 +1,1 @@
-
+In this model, we provide teacher-student model for image classification. As a teacher module we trained modified AlixNet, for student we used same module for reaching good performance.
