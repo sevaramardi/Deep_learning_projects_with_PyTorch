@@ -1,1 +1,2 @@
 
+Results were obtained after 5 epochs, if we train it for more epochs results will be more clear
