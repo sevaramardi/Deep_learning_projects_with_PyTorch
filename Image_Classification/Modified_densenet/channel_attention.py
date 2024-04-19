@@ -4,7 +4,7 @@ import torch.nn.functional as F
 
 
 
-class SpatialAttention(nn.Module):
+class ChannelAttention(nn.Module):
     def __init__(self, kernel_size=7): 
         super(SpatialAttention, self).__init__()
 
