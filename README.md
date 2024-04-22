@@ -72,9 +72,18 @@ This is the group project of CTLab students. In this project we use CTGAN for cr
      - used datased dogs and cats from Kaggle (https://www.kaggle.com/datasets/tongpython/cat-and-dog).
 
 
-    - Modified
+    - Modified BAM(BottleNeck attention models):
+     - to BAM is added two extra blocks.
+     - each block is devided into inner blocks wth same number conv, Bn layers and act functions.
+     - Output of two inner blocks concantinates by elemnt-wise.
+     - Model is designed by using tools- Python, PyTorch, Numpy, Matplotlib.
+     - Architecture is provided.
      
-    
+#Fourth repository is Object detection. Now I am learning this field as it is one wildly used one. Here i am providing youtube channels from where I am learning it, for who curious and eager to learn Object detection.
+
+     - DigitalScreene (333 lesson introduction to YOLOv8)
+     - Aladdin Person (Object detection tutorial)
+     - Nicolas Rennotte (Object detection with TensorFlow)
       
     
       
