@@ -1,5 +1,11 @@
 # Deep-learning-projects-with-PyTorch
 #Autoencoders
-Autoencoders are a type of neural network used primarily for the task of data compression and reconstruction. They work by learning a compressed representation of the input data, which can be used to reconstruct the original input as closely as possible. An autoencoder consists of two main parts: the encoder, which compresses the input into a smaller encoding, and the decoder, which attempts to recreate the input from this encoding. Autoencoders are trained by minimizing the difference between the input and its reconstruction, typically using a loss function such as mean squared error. They are useful in applications like anomaly detection, feature extraction, and dimensionality reduction, particularly in image processing and similar fields.
-In this repository 
-
+In this repository Autoencoders were used for image reconstruction task. There are two projects: CNN and ANN based Autoencoders. 
+  -CNN based Autoencoders:
+     -In this projects were bult classic CNN model with 2 layers convolution encoder which compress the data and 2 layers convolution transpose decoders which attempt to reconstruct the image.         *Used dataset CIFAR10
+       *Model was designed by using such as tools- Python, PyTorch, Jupyter Notebook, Numpy, Matplotlib.
+       *As a test version model was trained for 5 epochs. Results are posted in the repository in Jupyter Nootebook.
+       *Code for plotting also available.
+  -ANN based Autoenders:
+    
+      
