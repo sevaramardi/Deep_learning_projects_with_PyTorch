@@ -1,1 +1,2 @@
 
+Here in this project were used dataset from Roboflow https://universe.roboflow.com/selam-h8tid/kidney-stone-detection-fwubk/dataset/1. For training was used the pre-trained file of yolov8. And soon I will upload the modified yolov5 for kidney stone detection.
