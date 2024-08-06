@@ -9,43 +9,48 @@ from main import train_loader, test_loader
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(device)
 
-class Teacher(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.conv1 = nn.Conv2d(3, 64, 3)
-        self.pool = nn.MaxPool2d(2,2)
-        self.relu = nn.ReLU()
-        self.conv2 = nn.Conv2d(64, 128,3)
-        self.bn2 = nn.BatchNorm2d(128)
-        self.conv3 = nn.Conv2d(128, 256, 3)
-        self.conv4 = nn.Conv2d(256, 128, 3)
-        self.conv5 = nn.Conv2d(128,64, 3)
-        self.bn3 = nn.BatchNorm2d(64)
+# Load pre-trained teacher model, here we can use any deep classification models here as example I am using resnet18
+teacher_model = models.resnet18(pretrained=True)
+# modification of last layer is very important it depends on your task, but before using your teacher must be trained already, if you face issue please feel free and contanct with me
+teacher_model.fc = torch.nn.Linear(teacher_model.fc.in_features, num_classes)
 
-        self.fc1 = nn.Linear(7*7*64, 1200)
-        self.bn4 = nn.BatchNorm1d(1200)
-        self.fc2 = nn.Linear(1200,800)
-        self.bn5 = nn.BatchNorm1d(800)
-        self.fc3 = nn.Linear(800,10)
+# Save the trained model, for transfering its knowledge for student one
+torch.save(teacher_model.state_dict(), 'resnet18_teacher.pth')
+# class Teacher(nn.Module):
+#     def __init__(self):
+#         super().__init__()
+#         self.conv1 = nn.Conv2d(3, 64, 3)
+#         self.pool = nn.MaxPool2d(2,2)
+#         self.relu = nn.ReLU()
+#         self.conv2 = nn.Conv2d(64, 128,3)
+#         self.bn2 = nn.BatchNorm2d(128)
+#         self.conv3 = nn.Conv2d(128, 256, 3)
+#         self.conv4 = nn.Conv2d(256, 128, 3)
+#         self.conv5 = nn.Conv2d(128,64, 3)
+#         self.bn3 = nn.BatchNorm2d(64)
+
+#         self.fc1 = nn.Linear(7*7*64, 1200)
+#         self.bn4 = nn.BatchNorm1d(1200)
+#         self.fc2 = nn.Linear(1200,800)
+#         self.bn5 = nn.BatchNorm1d(800)
+#         self.fc3 = nn.Linear(800,10)
        
 
-    def forward(self,x):
-        x1 = self.relu(self.pool(self.conv1(x)))
-        x1 = self.relu(self.bn2(self.conv2(x1)))
-        x1 = self.relu(self.conv3(x1))
-        x1 = self.relu(self.conv4(x1))
-        x1 = self.relu(self.bn3(self.conv5(x1)))
+#     def forward(self,x):
+#         x1 = self.relu(self.pool(self.conv1(x)))
+#         x1 = self.relu(self.bn2(self.conv2(x1)))
+#         x1 = self.relu(self.conv3(x1))
+#         x1 = self.relu(self.conv4(x1))
+#         x1 = self.relu(self.bn3(self.conv5(x1)))
    
-        x2 = x1.view(-1, 7*7*64)
-        x3 = self.relu((self.fc1(x2)))
-        x4 = F.dropout(x3, p=0.25)
-        x5 = self.relu(self.bn5(self.fc2(x4)))
+#         x2 = x1.view(-1, 7*7*64)
+#         x3 = self.relu((self.fc1(x2)))
+#         x4 = F.dropout(x3, p=0.25)
+#         x5 = self.relu(self.bn5(self.fc2(x4)))
 
-        x7 = self.fc3(x5)
-        return x7
+#         x7 = self.fc3(x5)
+#         return x7
 
-teacher = Teacher().to(device)
-teacher.load_state_dict(torch.load('./t1_.pt'))
 
 class depthwise(nn.Module):
     def __init__(self,in_channels, out_channels, kernel_size, stride=1, padding=0):
@@ -93,7 +98,11 @@ class Student(nn.Module):
         x4 = self.layer3(self.bn1(self.droup1(x4)))
        
         return x4
-    
+
+
+teacher = Teacher().to(device)
+teacher.load_state_dict(torch.load('./t1_.pt'))
+teacher_model.eval()    
 student = Student().to(device)
 
 #weight initialization
